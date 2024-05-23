@@ -21,10 +21,10 @@ abstract class BaseMetrics
         $activities = Activity::select(
             DB::raw('event, COUNT(*) as count, YEAR(created_at) as year, MONTH(created_at) as month')
         )
-            ->when(!empty($eventFilter['include']), function ($query) use ($eventFilter) {
+            ->when(! empty($eventFilter['include']), function ($query) use ($eventFilter) {
                 return $query->whereIn('event', $eventFilter['include']);
             })
-            ->when(!empty($eventFilter['exclude']), function ($query) use ($eventFilter) {
+            ->when(! empty($eventFilter['exclude']), function ($query) use ($eventFilter) {
                 return $query->whereNotIn('event', $eventFilter['exclude']);
             })
             ->groupBy('event', 'year', 'month')
@@ -36,11 +36,11 @@ abstract class BaseMetrics
         $structuredActivities = [];
 
         foreach ($activities as $activity) {
-            $yearMonth = $activity->year . '-' . sprintf("%02d", $activity->month);
+            $yearMonth = $activity->year.'-'.sprintf('%02d', $activity->month);
             $structuredActivities[$yearMonth][$activity->event] = [
                 'count' => $activity->count,
                 'year' => $activity->year,
-                'month' => $activity->month
+                'month' => $activity->month,
             ];
         }
 

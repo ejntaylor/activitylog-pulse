@@ -2,9 +2,9 @@
 
 namespace Ejntaylor\ActivitylogPulse\Tests;
 
+use Ejntaylor\ActivitylogPulse\ActivitylogPulseServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Ejntaylor\ActivitylogPulse\ActivitylogPulseServiceProvider;
 
 class TestCase extends Orchestra
 {

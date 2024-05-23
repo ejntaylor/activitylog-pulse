@@ -2,14 +2,14 @@
 
 namespace Ejntaylor\ActivitylogPulse\Livewire;
 
-use Illuminate\Support\Collection;
 use Laravel\Pulse\Livewire\Card;
 
 class BaseActivityLogCard extends Card
 {
-
     public array $chartData;
+
     public array $labels;
+
     public string $chartId;
 
     protected function prepareChartData($metrics)
@@ -54,11 +54,12 @@ class BaseActivityLogCard extends Card
             '#6c757d', '#fd7e14', '#e83e8c', '#6610f2', '#6f42c1',
         ];
         $index = crc32($label) % count($colors);
+
         return $colors[$index];
     }
 
     protected function setChartId()
     {
-        $this->chartId = 'activity-log-chart-' .  \Illuminate\Support\Str::random(8);
+        $this->chartId = 'activity-log-chart-'.\Illuminate\Support\Str::random(8);
     }
 }

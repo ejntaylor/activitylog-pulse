@@ -3,7 +3,6 @@
 namespace Ejntaylor\ActivitylogPulse\Livewire;
 
 use Ejntaylor\ActivitylogPulse\Actions\GetMetrics;
-use Livewire\Attributes\Url;
 
 class ActivityLogCard extends BaseActivityLogCard
 {
@@ -23,5 +22,3 @@ class ActivityLogCard extends BaseActivityLogCard
         ]);
     }
 }
-
-

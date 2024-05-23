@@ -2,14 +2,13 @@
 
 namespace Ejntaylor\ActivitylogPulse;
 
-
+use Ejntaylor\ActivitylogPulse\Commands\ActivitylogPulseCommand;
 use Ejntaylor\ActivitylogPulse\Livewire\ActivityLogCard;
 use Ejntaylor\ActivitylogPulse\Livewire\ActivityLogModelEventsCard;
 use Illuminate\Foundation\Application;
 use Livewire\LivewireManager;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Ejntaylor\ActivitylogPulse\Commands\ActivitylogPulseCommand;
 
 class ActivitylogPulseServiceProvider extends PackageServiceProvider
 {
