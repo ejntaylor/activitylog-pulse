@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ejntaylor/activitylog-pulse",
+    "description": "Laravel Pulse cards for Spatie Activity Log",
     "keywords": [
-        ":vendor_name",
+        "Elliot Taylor",
         "laravel",
-        ":package_slug"
+        "activitylog-pulse"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ejntaylor/activitylog-pulse",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Elliot Taylor",
+            "email": "elliot@raison.co",
             "role": "Developer"
         }
     ],
@@ -35,19 +35,19 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Ejntaylor\\ActivitylogPulse\\": "src/",
+            "Ejntaylor\\ActivitylogPulse\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Ejntaylor\\ActivitylogPulse\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-activitylog-pulse --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Ejntaylor\\ActivitylogPulse\\ActivitylogPulseServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "ActivitylogPulse": "Ejntaylor\\ActivitylogPulse\\Facades\\ActivitylogPulse"
             }
         }
     },

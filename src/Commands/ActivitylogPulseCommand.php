@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Ejntaylor\ActivitylogPulse\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ActivitylogPulseCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'activitylog-pulse';
 
     public $description = 'My command';
 
