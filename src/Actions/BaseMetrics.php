@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\ActivityMetrics\Actions;
+namespace Ejntaylor\ActivitylogPulse\Actions;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;

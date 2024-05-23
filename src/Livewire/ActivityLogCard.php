@@ -2,7 +2,7 @@
 
 namespace Ejntaylor\ActivitylogPulse\Livewire;
 
-use App\Domain\ActivityMetrics\Actions\GetMetrics;
+use Ejntaylor\ActivitylogPulse\Actions\GetMetrics;
 use Livewire\Attributes\Url;
 
 class ActivityLogCard extends BaseActivityLogCard
@@ -19,6 +19,7 @@ class ActivityLogCard extends BaseActivityLogCard
             'chartData' => $this->chartData,
             'labels' => $this->labels,
             'header' => 'Activity Log Model Events',
+            'chartId' => $this->chartId,
         ]);
     }
 }

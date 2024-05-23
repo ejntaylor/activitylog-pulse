@@ -2,7 +2,7 @@
 
 namespace Ejntaylor\ActivitylogPulse\Livewire;
 
-use App\Domain\ActivityMetrics\Actions\GetMetricsModelEvents;
+use Ejntaylor\ActivitylogPulse\Actions\GetMetricsModelEvents;
 
 class ActivityLogModelEventsCard extends BaseActivityLogCard
 {

@@ -3,9 +3,6 @@
     </x-pulse::card-header>
 
     <x-pulse::scroll :expand="$expand">
-        @php
-            $chartId = 'activityLogChart-' . \Illuminate\Support\Str::random(8); // Generates a unique ID for the canvas
-        @endphp
         <canvas id="{{ $chartId }}"></canvas>
     </x-pulse::scroll>
 </x-pulse::card>

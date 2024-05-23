@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\ActivityMetrics\Actions;
+namespace Ejntaylor\ActivitylogPulse\Actions;
 
 class GetMetrics extends BaseMetrics
 {
