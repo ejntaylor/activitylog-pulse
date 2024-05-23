@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Livewire;
+namespace Ejntaylor\ActivitylogPulse\Livewire;
 
 use Laravel\Pulse\Livewire\Card;
+use Livewire\Attributes\Url;
 
 class BaseActivityLogCard extends Card
 {
+
     public $chartData;
     public $labels;
 
