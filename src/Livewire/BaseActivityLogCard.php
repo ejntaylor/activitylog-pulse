@@ -35,6 +35,7 @@ class BaseActivityLogCard extends Card
         $filteredMetrics = collect($metrics)
             ->mapWithKeys(function ($value, $key) use ($keyFormat) {
                 $date = \Carbon\Carbon::create($key);
+
                 return [$date->format($keyFormat) => $value];
             })
             ->sortByDesc(function ($value, $key) {
@@ -47,11 +48,11 @@ class BaseActivityLogCard extends Card
         })->all();
 
         // Group data by events
-        $events = $filteredMetrics->flatMap(fn($data) => array_keys($data))->unique()->sort();
+        $events = $filteredMetrics->flatMap(fn ($data) => array_keys($data))->unique()->sort();
 
         // Prepare chart data
         $this->chartData = $events->map(function ($event) use ($filteredMetrics, $sortedKeys) {
-            $data = collect($sortedKeys)->map(fn($key) => $filteredMetrics[$key][$event]['count'] ?? 0)->all();
+            $data = collect($sortedKeys)->map(fn ($key) => $filteredMetrics[$key][$event]['count'] ?? 0)->all();
 
             return [
                 'label' => $event,
@@ -62,7 +63,6 @@ class BaseActivityLogCard extends Card
             ];
         })->values()->all();
     }
-
 
     protected function getColorForEvent($label)
     {
