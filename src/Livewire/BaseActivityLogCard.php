@@ -2,6 +2,7 @@
 
 namespace Ejntaylor\ActivitylogPulse\Livewire;
 
+use Carbon\CarbonInterval;
 use Laravel\Pulse\Livewire\Card;
 
 class BaseActivityLogCard extends Card
@@ -12,30 +13,45 @@ class BaseActivityLogCard extends Card
 
     public string $chartId;
 
-    protected function prepareChartData($metrics)
+    protected function prepareChartData($metrics, CarbonInterval $interval)
     {
         $this->setChartId();
         $now = now();
-        $sixMonthsAgo = $now->copy()->subMonths(5)->startOfMonth();
+        $cutOffDate = $now->copy()->sub($interval);
+
+        $totalHours = $interval->totalHours;
+        $labelFormat = 'M d, H:i';
+        $keyFormat = 'Y-m-d H';
+
+        if ($totalHours > 24) {
+            $labelFormat = 'M d';
+            $keyFormat = 'Y-m-d';
+        }
+        if ($totalHours > 24 * 30) {
+            $labelFormat = 'M Y';
+            $keyFormat = 'Y-m';
+        }
 
         $filteredMetrics = collect($metrics)
-            ->filter(function ($value, $key) use ($sixMonthsAgo) {
-                return \Carbon\Carbon::createFromFormat('Y-m', $key) >= $sixMonthsAgo;
+            ->mapWithKeys(function ($value, $key) use ($keyFormat) {
+                $date = \Carbon\Carbon::create($key);
+                return [$date->format($keyFormat) => $value];
             })
             ->sortByDesc(function ($value, $key) {
                 return $key;
             });
 
-        $sortedMonths = $filteredMetrics->keys()->all();
-
-        $this->labels = collect($sortedMonths)->map(function ($month) {
-            return \Carbon\Carbon::createFromFormat('Y-m', $month)->format('F');
+        $sortedKeys = $filteredMetrics->keys()->all();
+        $this->labels = collect($sortedKeys)->map(function ($key) use ($labelFormat, $keyFormat) {
+            return \Carbon\Carbon::createFromFormat($keyFormat, $key)->format($labelFormat);
         })->all();
 
-        $events = $filteredMetrics->flatMap(fn ($data) => array_keys($data))->unique()->sort();
+        // Group data by events
+        $events = $filteredMetrics->flatMap(fn($data) => array_keys($data))->unique()->sort();
 
-        $this->chartData = $events->map(function ($event) use ($filteredMetrics, $sortedMonths) {
-            $data = collect($sortedMonths)->map(fn ($month) => $filteredMetrics[$month][$event]['count'] ?? 0)->all();
+        // Prepare chart data
+        $this->chartData = $events->map(function ($event) use ($filteredMetrics, $sortedKeys) {
+            $data = collect($sortedKeys)->map(fn($key) => $filteredMetrics[$key][$event]['count'] ?? 0)->all();
 
             return [
                 'label' => $event,
@@ -46,6 +62,7 @@ class BaseActivityLogCard extends Card
             ];
         })->values()->all();
     }
+
 
     protected function getColorForEvent($label)
     {
