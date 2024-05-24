@@ -5,8 +5,9 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ejntaylor/activitylog-pulse/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ejntaylor/activitylog-pulse/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ejntaylor/activitylog-pulse.svg?style=flat-square)](https://packagist.org/packages/ejntaylor/activitylog-pulse)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This displays Logs from the [Spatie Activity Log package](https://github.com/spatie/laravel-activitylog) within the Laravel Pulse Dashboard. 
 
+Currently there are two cards: Model Events (eg. crud) and Non Model Events.
 
 
 
@@ -47,9 +48,12 @@ php artisan vendor:publish --tag="activitylog-pulse-views"
 
 ## Usage
 
+Add the following to your Pulse Dashboard: resources/views/vendor/pulse/dashboard.blade.php
+
 ```php
-$activitylogPulse = new Ejntaylor\ActivitylogPulse();
-echo $activitylogPulse->echoPhrase('Hello, Ejntaylor!');
+    <livewire:pulse.activity-log-card cols="6" />
+
+    <livewire:pulse.activity-log-model-events-card cols="6" />
 ```
 
 ## Testing
