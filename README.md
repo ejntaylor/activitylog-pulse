@@ -7,7 +7,7 @@
 
 This displays Logs from the [Spatie Activity Log package](https://github.com/spatie/laravel-activitylog) within the Laravel Pulse Dashboard. 
 
-Currently there are two cards: Model Events (eg. crud) and Non Model Events.
+Currently, there are two cards: Model Events (eg. crud) and Non Model Events.
 
 
 
@@ -54,6 +54,14 @@ Add the following to your Pulse Dashboard: resources/views/vendor/pulse/dashboar
     <livewire:pulse.activity-log-card cols="6" />
 
     <livewire:pulse.activity-log-model-events-card cols="6" />
+```
+
+Card Type: you can pass a parameter 'type=chart' or  'type=list' to choose the output of the card. Default is 'chart'.
+
+```php
+    <livewire:pulse.activity-log-card cols="6" type="chart" />
+
+    <livewire:pulse.activity-log-model-events-card cols="6" type="list" />
 ```
 
 ## Testing
