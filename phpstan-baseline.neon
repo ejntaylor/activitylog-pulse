@@ -1,0 +1,5 @@
+parameters:
+    ignoreErrors:
+        - message: "#^Call to static method select\\(\\) on an unknown class Spatie\\\\Activitylog\\\\Models\\\\Activity\\.$#"
+          count: 1
+          path: src/Actions/BaseMetrics.php
