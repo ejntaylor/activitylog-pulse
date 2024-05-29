@@ -15,20 +15,22 @@ abstract class BaseMetrics
     {
         $cutOffDate = Carbon::now()->sub($interval);
         $activities = $this->fetchActivities($cutOffDate);
+
         return $this->structureActivities($activities);
     }
 
     protected function fetchActivities($cutOffDate)
     {
         $eventFilter = $this->getEventFilter();
+
         return Activity::select(
             DB::raw('event, COUNT(*) as count, YEAR(created_at) as year, MONTH(created_at) as month')
         )
             ->where('created_at', '>=', $cutOffDate)
-            ->when(!empty($eventFilter['include']), function ($query) use ($eventFilter) {
+            ->when(! empty($eventFilter['include']), function ($query) use ($eventFilter) {
                 return $query->whereIn('event', $eventFilter['include']);
             })
-            ->when(!empty($eventFilter['exclude']), function ($query) use ($eventFilter) {
+            ->when(! empty($eventFilter['exclude']), function ($query) use ($eventFilter) {
                 return $query->whereNotIn('event', $eventFilter['exclude']);
             })
             ->groupBy('event', 'year', 'month')
@@ -48,6 +50,7 @@ abstract class BaseMetrics
                 'month' => $activity->month,
             ];
         }
+
         return $structuredActivities;
     }
 }
