@@ -17,7 +17,7 @@ class ActivityLogCard extends BaseActivityLogCard
         return view('activitylog-pulse::livewire.activity-log-card', [
             'chartData' => $this->chartData,
             'labels' => $this->labels,
-            'header' => 'Activity Log Model Events',
+            'header' => 'Activity Log Events',
             'chartId' => $this->chartId,
         ]);
     }
