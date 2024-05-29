@@ -8,8 +8,8 @@ class ActivityLogCard extends BaseActivityLogCard
 {
     public function mount()
     {
-        $metrics = app(GetMetrics::class)->execute();
-        $this->prepareChartData($metrics);
+        $metrics = app(GetMetrics::class)->execute($this->periodAsInterval());
+        $this->prepareChartData($metrics, $this->periodAsInterval());
     }
 
     public function render()
@@ -17,7 +17,7 @@ class ActivityLogCard extends BaseActivityLogCard
         return view('activitylog-pulse::livewire.activity-log-card', [
             'chartData' => $this->chartData,
             'labels' => $this->labels,
-            'header' => 'Activity Log Model Events',
+            'header' => 'Activity Log Events',
             'chartId' => $this->chartId,
         ]);
     }

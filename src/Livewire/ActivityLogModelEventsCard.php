@@ -8,8 +8,8 @@ class ActivityLogModelEventsCard extends BaseActivityLogCard
 {
     public function mount()
     {
-        $metrics = app(GetMetricsModelEvents::class)->execute();
-        $this->prepareChartData($metrics);
+        $metrics = app(GetMetricsModelEvents::class)->execute($this->periodAsInterval());
+        $this->prepareChartData($metrics, $this->periodAsInterval());
     }
 
     public function render()

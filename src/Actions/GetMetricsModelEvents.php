@@ -7,7 +7,7 @@ class GetMetricsModelEvents extends BaseMetrics
     protected function getEventFilter()
     {
         return [
-            'include' => ['action', 'created', 'deleted', 'updated'],
+            'include' => ['created', 'deleted', 'updated'],
         ];
     }
 }
