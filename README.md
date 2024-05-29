@@ -7,8 +7,9 @@
 
 This displays Logs from the [Spatie Activity Log package](https://github.com/spatie/laravel-activitylog) within the Laravel Pulse Dashboard. 
 
-Currently, there are two cards: Model Events (eg. crud) and Non Model Events.
+Currently, there are two cards: Model Events and Non Model Events.
 
+<img width="1273" alt="image" src="https://github.com/ejntaylor/activitylog-pulse/assets/2080025/a380f14e-0d70-44b5-8d03-c921c98af141">
 
 
 ## Installation
